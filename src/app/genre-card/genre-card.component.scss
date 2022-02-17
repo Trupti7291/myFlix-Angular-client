@@ -1,0 +1,13 @@
+.mat-card {
+    background-color: white;
+    color: black;
+  }
+  .mat-card-header {
+    color: rgb(44, 122, 240);
+  }
+
+@media screen and (max-width: 840px) {
+    mat-card {
+        max-width: 200px;
+    }
+}

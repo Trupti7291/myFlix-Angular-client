@@ -3,6 +3,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { GenreCardComponent } from '../genre-card/genre-card.component';
+import { DirectorCardComponent } from '../director-card/director-card.component';
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -36,6 +39,20 @@ export class MovieCardComponent implements OnInit {
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
       this.FavoriteMovies = resp.FavoriteMovies;
       console.log(this.FavoriteMovies);
+    });
+  }
+
+  openGenreDialog(name: string, description: string): void {
+    this.dialog.open(GenreCardComponent, {
+      data: { name: name, description: description },
+      width: '300px',
+    });
+  }
+
+  openDirectorDialog(name: string, bio: string, birth: string, death: string): void {
+    this.dialog.open(DirectorCardComponent, {
+      data: { name: name, bio: bio, birth: birth, death: death },
+      width: '300px',
     });
   }
 }

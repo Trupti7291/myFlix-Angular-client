@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
+import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -42,6 +43,13 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  openSynopsisDialog(title: string, description: string): void {
+    this.dialog.open(SynopsisCardComponent, {
+      data: { title: title, description: description },
+      width: '300px',
+    });
+  }
+
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {
       data: { name: name, description: description },
@@ -54,5 +62,39 @@ export class MovieCardComponent implements OnInit {
       data: { name: name, bio: bio, birth: birth, death: death },
       width: '300px',
     });
+  }
+
+  addFavoriteMovie(MovieID: string, title: string): void {
+    this.fetchApiData.addFavoriteMovie(MovieID).subscribe((resp: any) => {
+      this.snackBar.open(`${title} has been added to your favorites!`, 'OK', {
+        duration: 4000,
+      });
+      this.ngOnInit();
+    });
+    return this.getFavoriteMovies();
+  }
+
+  removeFavoriteMovie(MovieId: string, title: string): void {
+    this.fetchApiData.deleteFavoriteMovie(MovieId).subscribe((resp: any) => {
+      console.log(resp);
+      this.snackBar.open(
+        `${title} has been removed from your favorites!`, 'OK', {
+        duration: 4000,
+      });
+      this.ngOnInit();
+    });
+    return this.getFavoriteMovies();
+  }
+
+  // Check if the movie is the user's favorite?
+  isFavorite(MovieID: string): boolean {
+    return this.FavoriteMovies.some((movie) => movie._id === MovieID);
+  }
+
+  // toggle add/remove user's favorite function. 
+  toggleFavorite(movie: any): void {
+    this.isFavorite(movie._id)
+      ? this.removeFavoriteMovie(movie._id, movie.Title)
+      : this.addFavoriteMovie(movie._id, movie.Title);
   }
 }

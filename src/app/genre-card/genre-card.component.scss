@@ -1,10 +1,10 @@
 .mat-card {
-    background-color: white;
-    color: black;
-  }
-  .mat-card-header {
-    color: rgb(44, 122, 240);
-  }
+  background-color: black;
+  color: white;
+}
+.mat-card-header {
+  color: rgb(126, 146, 235);;
+}
 
 @media screen and (max-width: 840px) {
     mat-card {

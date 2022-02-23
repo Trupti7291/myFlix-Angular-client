@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,7 +17,7 @@ export class MovieCardComponent implements OnInit {
   FavoriteMovies: any[] = [];
 
   constructor(
-    public fetchApiData: FetchApiDataService,
+    public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) { }

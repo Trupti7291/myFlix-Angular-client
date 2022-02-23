@@ -6,10 +6,18 @@ import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://my-flixapp.herokuapp.com/';
+export interface User {
+  _id: string;
+  FavoriteMovies: Array<string>;
+  Username: string;
+  Email: string;
+  Birthday: Date;
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class FetchApiDataService {
+export class UserRegistrationService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {

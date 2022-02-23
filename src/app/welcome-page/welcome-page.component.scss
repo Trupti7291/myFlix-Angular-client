@@ -32,12 +32,13 @@ mat-card-actions {
 }
 
 .mat-stroked-button {
-  border: 3px solid rgb(202, 167, 8);
-  color: rgb(202, 167, 8);
+  border: 3px solid rgb(28, 9, 197);
+  background-color: rgb(28, 9, 197);
+  color: white;
   width: 15vw;
   transition-duration: 0.2s;
 }
 .mat-stroked-button:hover {
-  background-color: rgb(202, 167, 8);
-  color: black;
+  background-color: rgb(31, 9, 238);
+  color: white;
 }

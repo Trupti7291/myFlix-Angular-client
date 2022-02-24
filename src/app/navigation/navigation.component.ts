@@ -14,6 +14,9 @@ export class NavigationComponent implements OnInit {
     public router: Router
   ) { }
 
+  /**
+   * log out the current user and clear the localstorage. Then locates to 'welcome page'
+   */
   userLogout(): void {
     localStorage.clear();
     this.snackBar.open('You successfully logged out!', 'Ok', {
